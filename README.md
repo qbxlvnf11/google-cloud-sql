@@ -1,5 +1,5 @@
 
-### 1. Create the .env file & Add Configuration Variables to the .env fil
+### 1. Create the .env file & Add Configuration Variables to the .env file
 
 ```bash
 # Google Cloud SQL Connection Details
@@ -30,7 +30,7 @@ pip install python-dotenv
 pip install psycopg2-binary
 ```
 
-### 34. Run test code
+### 4. Run test code
 
 ```python
 python test_google_cloud_sql.py
