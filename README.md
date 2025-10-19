@@ -18,7 +18,7 @@ TABLE_NAME="<YOUR_TABLE_NAME>"
 gcloud auth application-default login
 ```
 
-### 3. Set environment and run test code
+### 3. Set environment
 
 ```bash
 conda create -n google_cloud_sql_env python=3.9
@@ -29,6 +29,8 @@ pip install sqlalchemy
 pip install python-dotenv
 pip install psycopg2-binary
 ```
+
+### 34. Run test code
 
 ```python
 python test_google_cloud_sql.py
