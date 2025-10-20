@@ -1,7 +1,7 @@
 
 ### 1. Create the .env file & Add Configuration Variables to the .env file
 
-```bash
+```ini
 # Google Cloud SQL Connection Details
 # Enter your actual database connection information here.
 
@@ -14,9 +14,22 @@ TABLE_NAME="<YOUR_TABLE_NAME>"
 
 ### 2. Set default credentials (Application Default Credentials, ADC) for accessing Google Cloud 
 
-```
-gcloud auth application-default login
-```
+* Login gcloud auth
+
+    ```
+    gcloud auth application-default login
+    ```
+
+* load_credentials_from_file
+
+    * **Set the environment variable** inside the `.env` file. Add the following line and replace the placeholder with the absolute path to your Google Cloud service account JSON key.
+    *  [Cloud SQL Permission](https://blog.naver.com/qbxlvnf11/224047280884)
+
+    ```ini
+    # .env
+    GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/service-account-key.json"
+    ```
+
 
 ### 3. Set environment
 

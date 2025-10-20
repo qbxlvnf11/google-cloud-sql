@@ -2,13 +2,7 @@ import sqlalchemy
 from sqlalchemy.engine import Engine, Row
 from sqlalchemy.exc import SQLAlchemyError
 from google.cloud.sql.connector import Connector, IPTypes
-import os
-from typing import List, Optional
-
-import sqlalchemy
-from sqlalchemy.engine import Engine, Row
-from sqlalchemy.exc import SQLAlchemyError
-from google.cloud.sql.connector import Connector, IPTypes
+from google.auth import load_credentials_from_file
 import os
 from typing import List, Optional
 
@@ -25,6 +19,7 @@ class CloudSQLDatabase:
         db_pass: str,
         db_name: str,
         db_api_driver: str,
+        cred_path: str, 
         db_driver: str = "postgresql+psycopg2",
         ip_type: IPTypes = IPTypes.PUBLIC
     ):
@@ -47,8 +42,15 @@ class CloudSQLDatabase:
         self.db_driver = db_driver
         self.db_api_driver = db_api_driver
         self.ip_type = ip_type
-
-        self.connector = Connector()
+        
+        if cred_path is not None:
+            credentials, _ = load_credentials_from_file(
+                cred_path, scopes=["https://www.googleapis.com/auth/cloud-platform"]
+            )
+            self.connector = Connector(credentials=credentials)
+            print('Complete to load_credentials_from_file!')
+        else:
+            self.connector = Connector()
         self.engine = self._create_engine()
 
     def _getconn(self) -> sqlalchemy.engine.base.Connection:
@@ -103,7 +105,6 @@ class CloudSQLDatabase:
             print(f"모든 사용자 조회 실패: {e}")
             return []
     
-
     def get_table_columns(self, table_name: str):
         """
         주어진 테이블의 컬럼 정보를 조회합니다.
@@ -133,3 +134,5 @@ class CloudSQLDatabase:
         except SQLAlchemyError as e:
             print(f"컬럼 정보 조회 실패: {e}")
             return []
+
+            

@@ -18,6 +18,7 @@ if __name__ == "__main__":
     DB_PASS = os.environ.get("DB_PASS", "your-db-password")
     DB_NAME = os.environ.get("DB_NAME", "my-database")
     TABLE_NAME = os.environ.get("TABLE_NAME", "test-db")
+    CRED_PATH = os.environ.get("GOOGLE_APPLICATION_CREDENTIALS", None)
 
     ## MySQL의 경우 "mysql+pymysql"
     DB_DRIVER = "postgresql+pg8000" #"postgresql+psycopg2"
@@ -59,6 +60,7 @@ if __name__ == "__main__":
             db_pass=DB_PASS,
             db_name=DB_NAME,
             db_api_driver=DB_API_DRIVER,
+            cred_path=CRED_PATH,
             db_driver=DB_DRIVER
         )
 
