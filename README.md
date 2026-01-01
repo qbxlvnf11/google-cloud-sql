@@ -49,14 +49,13 @@ pip install psycopg2-binary
 python test_google_cloud_sql.py
 ```
 
+---
 
-Author
-=============
+## Author
 
-#### - LinkedIn: https://www.linkedin.com/in/taeyong-kong-016bb2154
+#### - [LinkedIn](https://www.linkedin.com/in/taeyong-kong-016bb2154)
 
-#### - Blog URL: https://blog.naver.com/qbxlvnf11
+#### - [Blog URL](https://blog.naver.com/qbxlvnf11)
 
 #### - Email: qbxlvnf11@google.com, qbxlvnf11@naver.com
-
 
